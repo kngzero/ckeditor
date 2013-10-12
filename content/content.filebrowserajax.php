@@ -44,10 +44,15 @@
 
 					// Get the field id's:
                     $fields = $section->fetchFields();
+                    
                     $fieldIDs = array();
                     foreach($fields as $field)
                     {
                         $fieldIDs[] = $field->get('id');
+                        //Get path to file from Section field
+                        $type=$field->get('type');
+                        $type=='upload'? $destination = $field->get('destination'):null;
+
                     }
 
 					// Add rows:
@@ -71,18 +76,20 @@
                                 if($name == false) {
                                     $name = basename($info['file']);
                                 }
+                                //var_export($symphonySubdir);
 
-                                $value = '<a href="'.$symphonySubdir.'/workspace'.$info['file'].'">';
+                                $value = '<a href="'.$symphonySubdir.$destination.'/'.$info['file'].'">';
 
-                                $value = '<a href="/workspace'.$info['file'].'">';
                                 $a = explode('.', $info['file']);
                                 $ext = trim(strtolower($a[count($a)-1]));
 
                                 // Check if JIT is enabled:
                                 if($jitEnabled &&
                                    ($ext == 'jpeg' || $ext == 'jpg' || $ext == 'png' || $ext == 'gif'))
-                                {
-                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.$info['file'].'" alt="thumb" width="100" height="100" />';
+                                {   
+                                    //Replace '/workspace' with '' for jit transform
+                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.str_replace('/workspace','',$destination).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
+                                    
                                 } else {
                                     // Show an icon according to it's extension:
                                     $a = explode('.', basename($info['file']));
