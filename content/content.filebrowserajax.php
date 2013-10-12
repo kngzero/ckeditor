@@ -50,9 +50,8 @@
                     {
                         $fieldIDs[] = $field->get('id');
                         //Get path to file from Section field
-                        $type=$field->get('type');
-                        $type=='upload'? $destination = $field->get('destination'):null;
-
+                        $dest = $field->get('destination');
+                        isset($dest)? $destination = $field->get('destination'):null;
                     }
 
 					// Add rows:
@@ -76,7 +75,6 @@
                                 if($name == false) {
                                     $name = basename($info['file']);
                                 }
-                                //var_export($symphonySubdir);
 
                                 $value = '<a href="'.$symphonySubdir.$destination.'/'.$info['file'].'">';
 
