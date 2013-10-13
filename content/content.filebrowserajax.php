@@ -86,7 +86,7 @@
                                    ($ext == 'jpeg' || $ext == 'jpg' || $ext == 'png' || $ext == 'gif'))
                                 {   
                                     //Replace '/workspace' with '' for jit transform
-                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.str_replace('/workspace','',$destination).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
+                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.preg_replace('/\/workspace/','',$destination,1).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
                                     
                                 } else {
                                     // Show an icon according to it's extension:
