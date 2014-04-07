@@ -150,7 +150,7 @@
             $ol->appendChild($template);
 
             // Append all the fields:
-            $presets = Symphony::Database()->fetch('SELECT * FROM `tbl_ckeditor_presets `');
+            $presets = Symphony::Database()->fetch('SELECT * FROM `tbl_ckeditor_presets`');
             $index   = 0;
             foreach($presets as $preset)
             {
@@ -281,7 +281,8 @@
                 if(!empty($shortcuts))
                 {
                     foreach($shortcuts as $i => $shortcut) {
-                        Symphony::Database()->insert($shortcut, "tbl_ckeditor_link_templates");
+												
+							Symphony::Database()->insert($shortcut, "tbl_ckeditor_link_templates");						
                     }
                 }
             }
@@ -306,6 +307,7 @@
                 // Create it all new:
                 foreach($_POST['ckeditor_presets'] as $preset)
                 {
+					
                     Symphony::Database()->insert($preset, 'tbl_ckeditor_presets');
                     // Create text formatter file:
                     $str = file_get_contents(EXTENSIONS.'/ckeditor/text-formatters/template.ckeditor.php');
