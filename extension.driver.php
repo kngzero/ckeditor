@@ -327,7 +327,7 @@
             Symphony::Database()->query("
                 CREATE TABLE IF NOT EXISTS `tbl_ckeditor_link_templates` (
                 `id` int(11) NOT NULL auto_increment,
-                `link` varchar(255) NOT NULL,
+                `link` varchar(255) DEFAULT NULL,
                 `field_id` int(11) NOT NULL,
                 `section_id` int(11) NOT NULL,
                 `page_id` int(11) NOT NULL,
@@ -339,7 +339,7 @@
             Symphony::Database()->query("
                 CREATE TABLE IF NOT EXISTS `tbl_ckeditor_presets` (
                 `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
-                `name` VARCHAR( 255 ) NOT NULL ,
+                `name` VARCHAR( 255 ) DEFAULT NULL,
                 `toolbar` TEXT NULL ,
                 `plugins` TEXT NULL ,
                 `resize` INT( 1 ) NULL ,
