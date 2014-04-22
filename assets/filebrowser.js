@@ -1,19 +1,20 @@
 var funcNum;
 var urlNew;
-
 if (typeof Symphony == "undefined") {
 	var Symphony = {};
 }
 if (typeof Symphony.WEBSITE == "undefined") {
-	Symphony.WEBSITE = window.location.toString().match(/^(.+?)\/symphony/)[1];
+	Symphony.WEBSITE = Symphony.Context.get('root');
+	
 }
 if (typeof Symphony.ADMIN == "undefined") {
-	Symphony.ADMIN = Symphony.WEBSITE + "/symphony";
+	Symphony.ADMIN = Symphony.Context.get('symphony');
+	
 }
 
 $(function(){
     var $ = jQuery;
-
+	
 	funcNum = getUrlParam('CKEditorFuncNum');
 
 	$("div.left a").click(function(){
@@ -45,6 +46,7 @@ function loadRightPanel(url)
 		// Click on an anchor
 		$("a", $("div.items")).click(function(){
 			// Send URL to CKEditor:
+			
 			window.opener.CKEDITOR.tools.callFunction(funcNum, $(this).attr("href"));
 			window.close();
 			return false;
@@ -52,6 +54,7 @@ function loadRightPanel(url)
 		// Create new-functionality:
 		$("a.create").click(function(){
 			urlNew = $(this).attr("href");
+			
 			$.get(urlNew, function(data){
 				buildForm(data);
 			});

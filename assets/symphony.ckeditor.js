@@ -14,7 +14,9 @@ jQuery(document).ready(function () {
             if(a[i].toString().indexOf('ckeditor') != -1)
             {
                 myClassName = a[i];
+				
             }
+			
         }
 
         // Set the configurationdata:
@@ -25,8 +27,8 @@ jQuery(document).ready(function () {
         ck_configurationData.forcePasteAsPlainText = true;
         ck_configurationData.format_tags = 'p;h1;h2;h3';
         ck_configurationData.entities_processNumerical = 'force';
-        ck_configurationData.filebrowserBrowseUrl = Symphony.Context.get('root') + '/symphony/extension/ckeditor/filebrowser/';
-
+        ck_configurationData.filebrowserBrowseUrl = Symphony.Context.get('symphony') + '/extension/ckeditor/filebrowser/';
+		
         // Set the correct height and width:
         ck_configurationData.height = jQuery(this).height();
         ck_configurationData.width = '100%'; // add some width to make up for the margins

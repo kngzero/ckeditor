@@ -14,6 +14,7 @@
 
             // The pages:
             $tree = array();
+			
 			$tree[] = array('name'=>'', 'items'=>$this->buildTree());
 
 			echo json_encode($tree);

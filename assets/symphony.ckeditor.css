@@ -13,3 +13,30 @@ table.cke_editor td, table.cke_dialog td {
 table.cke_dialog .cke_dialog_contents .cke_dialog_contents_body > div > table > tbody > tr > td {
 	padding-left: 10px !important;
 }
+.ckeditor-duplicator + .label{
+	float:left;
+	display:block;
+	width:100%;
+}
+.collapsible{
+	position:relative;
+	float:left;
+	display:block;
+	width:100%;
+}
+.collapsible .tab{
+	width:100%;
+	display:block;
+	float:left;
+	height:16px;
+	border-bottom: 1px solid #000000;
+	overflow:hidden;
+	margin-bottom: 5px;
+}
+.collapsible .tab header h3:hover{
+	cursor:pointer;
+}
+.collapsible .tab.open{
+	padding-bottom:10px;
+	padding-top:10px;
+}

@@ -37,7 +37,7 @@
         public function appendPresets($context)
         {
             Symphony::Engine()->Page->addScriptToHead(URL . '/extensions/ckeditor/assets/preferences.js', 4676);
-
+			Symphony::Engine()->Page->addStylesheetToHead(URL . '/extensions/ckeditor/assets/symphony.ckeditor.css', 'screen', 30);
             $wrapper = $context['wrapper'];
 
             $fieldset = new XMLElement('fieldset', '', array('class'=>'settings'));
@@ -154,7 +154,7 @@
             $index   = 0;
             foreach($presets as $preset)
             {
-                $template = new XMLElement('li');
+                $template = new XMLElement('li',null ,array('class'=>'tab'));
                 $template->appendChild(new XMLElement('header', '<h3>'.$preset['name'].'</h3>'));
                 $template->appendChild(Widget::Label(__('Name'), Widget::Input('ckeditor_presets['.$index.'][name]', $preset['name'])));
                 $template->appendChild(Widget::Label(__('Toolbar'),
@@ -409,7 +409,7 @@
 
             if(!$this->addedCKEditorHeaders){
                 Administration::instance()->Page->addScriptToHead(URL . '/extensions/ckeditor/lib/ckeditor/ckeditor.js', 200, false);
-                Administration::instance()->Page->addScriptToHead(URL . '/symphony/extension/ckeditor/js/', 209, false);
+                Administration::instance()->Page->addScriptToHead(SYMPHONY_URL . '/extension/ckeditor/js/', 209, false);
                 Administration::instance()->Page->addScriptToHead(URL . '/extensions/ckeditor/assets/symphony.ckeditor.js', 210, false);
                 Administration::instance()->Page->addStylesheetToHead(URL . '/extensions/ckeditor/assets/symphony.ckeditor.css', 'screen', 30);
 
