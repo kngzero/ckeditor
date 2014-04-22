@@ -14,16 +14,16 @@ jQuery(function ($) {
 				}
 			}).change();
 	}
-	$('ol.ckeditor-duplicator.collapsible .tab').click(function () {					
-			if($(this).hasClass('open')){			
+	$('ol.ckeditor-duplicator.collapsible .tab header').click(function () {					
+			if($(this).parent('.tab').hasClass('open')){			
 				$('ol.ckeditor-duplicator.collapsible .tab').animate({height: "16px"});
 				$('ol.ckeditor-duplicator.collapsible .tab').removeClass('open');
 			}else{
 				$('ol.ckeditor-duplicator.collapsible .tab').animate({height: "16px"});
 				$('ol.ckeditor-duplicator.collapsible .tab').removeClass('open');
-				$(this).animate({height: "346px"});			
-				$(this).addClass('open');
-			}			
+				$(this).parent('.tab').animate({height: "346px"});			
+				$(this).parent('.tab').addClass('open');
+			}					
 	});
 	$("ol.ckeditor-duplicator.collapsible .constructable").click(function () {
 		bindFunctionality();
