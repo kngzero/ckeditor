@@ -391,7 +391,7 @@
         public function uninstall()
         {
             Symphony::Configuration()->remove('sections', 'ckeditor');
-            Administration::instance()->saveConfig();
+            Symphony::Configuration()->write();
             Symphony::Database()->query("DROP TABLE `tbl_ckeditor_link_templates`");
             Symphony::Database()->query("DROP TABLE `tbl_ckeditor_presets`");
         }
