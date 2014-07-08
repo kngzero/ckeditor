@@ -69,6 +69,7 @@ function buildForm(data)
     var $ = jQuery;
     
 	$("div.right").html('<form method="post" action="' + urlNew + '" enctype="multipart/form-data"></form>');
+	$("div.right form").append('<input type="hidden" name="xsrf" value="' + $("input[name='xsrf']", data).attr("value") + '" />');
 	$("div.field", data).each(function(){
 		$("div.right form").append('<div class="field">' + $(this).html() + '</div>');
 	});
