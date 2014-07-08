@@ -48,6 +48,9 @@
                     foreach($fields as $field)
                     {
                         $fieldIDs[] = $field->get('id');
+                        //Get path to file from Section field
+                        $dest = $field->get('destination');
+                        isset($dest)? $destination = $field->get('destination'):null;
                     }
 
 					// Add rows:
@@ -72,9 +75,8 @@
                                     $name = basename($info['file']);
                                 }
 
-                                $value = '<a href="'.$symphonySubdir.'/workspace'.$info['file'].'">';
+                                $value = '<a href="'.$symphonySubdir.$destination.'/'.$info['file'].'">';
 
-                                $value = '<a href="/workspace'.$info['file'].'">';
                                 $a = explode('.', $info['file']);
                                 $ext = trim(strtolower($a[count($a)-1]));
 
@@ -82,7 +84,7 @@
                                 if($jitEnabled &&
                                    ($ext == 'jpeg' || $ext == 'jpg' || $ext == 'png' || $ext == 'gif'))
                                 {
-                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.$info['file'].'" alt="thumb" width="100" height="100" />';
+                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.preg_replace('/\/workspace/','',$destination,1).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
                                 } else {
                                     // Show an icon according to it's extension:
                                     $a = explode('.', basename($info['file']));

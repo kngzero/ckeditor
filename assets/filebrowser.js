@@ -1,20 +1,23 @@
 var funcNum;
 var urlNew;
+
 if (typeof Symphony == "undefined") {
 	var Symphony = {};
 }
 if (typeof Symphony.WEBSITE == "undefined") {
-	Symphony.WEBSITE = Symphony.Context.get('root');
-	
+
+	var url = window.location.href.split('/extension/');
+	//console.log(url);
+
+	Symphony.WEBSITE = url[0];
 }
 if (typeof Symphony.ADMIN == "undefined") {
-	Symphony.ADMIN = Symphony.Context.get('symphony');
-	
+	Symphony.ADMIN = Symphony.WEBSITE;
 }
 
 $(function(){
     var $ = jQuery;
-	
+
 	funcNum = getUrlParam('CKEditorFuncNum');
 
 	$("div.left a").click(function(){
@@ -46,7 +49,6 @@ function loadRightPanel(url)
 		// Click on an anchor
 		$("a", $("div.items")).click(function(){
 			// Send URL to CKEditor:
-			
 			window.opener.CKEDITOR.tools.callFunction(funcNum, $(this).attr("href"));
 			window.close();
 			return false;
@@ -54,7 +56,6 @@ function loadRightPanel(url)
 		// Create new-functionality:
 		$("a.create").click(function(){
 			urlNew = $(this).attr("href");
-			
 			$.get(urlNew, function(data){
 				buildForm(data);
 			});
@@ -67,7 +68,7 @@ function buildForm(data)
 {
     var $ = jQuery;
     
-	$("div.right").html('<form method="post" action="' + urlNew + '"></form>');
+	$("div.right").html('<form method="post" action="' + urlNew + '" enctype="multipart/form-data"></form>');
 	$("div.field", data).each(function(){
 		$("div.right form").append('<div class="field">' + $(this).html() + '</div>');
 	});
