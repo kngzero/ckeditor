@@ -75,7 +75,7 @@
                                     $name = basename($info['file']);
                                 }
 
-                                $value = '<a href="'.$symphonySubdir.$destination.'/'.$info['file'].'">';
+                                $value = '<a href="'.$symphonyDomain.$symphonySubdir.$destination.'/'.$info['file'].'">';
 
                                 $a = explode('.', $info['file']);
                                 $ext = trim(strtolower($a[count($a)-1]));
@@ -84,7 +84,7 @@
                                 if($jitEnabled &&
                                    ($ext == 'jpeg' || $ext == 'jpg' || $ext == 'png' || $ext == 'gif'))
                                 {
-                                    $value .= '<img src="'.$symphonySubdir.'/image/2/100/100/5'.preg_replace('/\/workspace/','',$destination,1).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
+                                    $value .= '<img src="'.$symphonyDomain.$symphonySubdir.'/image/2/100/100/5'.preg_replace('/\/workspace/','',$destination,1).'/'.$info['file'].'" alt="thumb" width="100" height="100" />';
                                 } else {
                                     // Show an icon according to it's extension:
                                     $a = explode('.', basename($info['file']));
@@ -98,7 +98,7 @@
                         }
 					}
 
-					$form->appendChild(new XMLElement('a', __('create new'), array('href'=>$symphonySubdir.'/symphony/publish/'.$section->get('handle').'/new/', 'class'=>'create button')));
+					$form->appendChild(new XMLElement('a', __('create new'), array('href'=>$symphonyDomain.$symphonySubdir.'/symphony/publish/'.$section->get('handle').'/new/', 'class'=>'create button')));
 					$form->appendChild(new XMLElement('h3', $section->get('name')));
 					$form->appendChild($div);
 					$form->appendChild(new XMLElement('div', '', array('id'=>'thumb')));
