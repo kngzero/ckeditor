@@ -1,7 +1,7 @@
 jQuery(document).ready(function () {
     jQuery('.cke').each(function(){
 			var width = jQuery(this).width();
-			alert(width);
+			
 			jQuery(this).find('iframe').css('width',width);
 	});
     // Add custom styles:
