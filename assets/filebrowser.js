@@ -1,15 +1,18 @@
 var funcNum;
 var urlNew;
 
+var url = location.protocol + "//" + document.domain + "/" 
+          + location.pathname.split('/')[1] + "/";
 if (typeof Symphony == "undefined") {
 	var Symphony = {};
 }
 if (typeof Symphony.WEBSITE == "undefined") {
-	Symphony.WEBSITE = window.location.toString().match(/^(.+?)\/symphony/)[1];
+	Symphony.WEBSITE = url;
 }
 if (typeof Symphony.ADMIN == "undefined") {
-	Symphony.ADMIN = Symphony.WEBSITE + "/symphony";
+	Symphony.ADMIN = url + "/symphony";
 }
+
 
 $(function(){
     var $ = jQuery;
