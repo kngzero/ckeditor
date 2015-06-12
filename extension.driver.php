@@ -355,7 +355,10 @@
 
             // Delete formatter files:
             $formatters = glob(EXTENSIONS.'/ckeditor/text-formatters/formatter.*.php');
-            foreach($formatters as $formatter) { unlink($formatter); }
+			if (is_array($formatters) || is_object($formatters))
+			{
+	            foreach($formatters as $formatter) { unlink($formatter); }
+			}
 
             // Create it all new:
             $presets = Symphony::Database()->fetch('SELECT * FROM `tbl_ckeditor_presets`;');
@@ -389,7 +392,7 @@
         public function uninstall()
         {
             Symphony::Configuration()->remove('sections', 'ckeditor');
-            Administration::instance()->saveConfig();
+            //Administration::instance()->saveConfig();
             Symphony::Database()->query("DROP TABLE `tbl_ckeditor_link_templates`");
             Symphony::Database()->query("DROP TABLE `tbl_ckeditor_presets`");
         }
